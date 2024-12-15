@@ -1,6 +1,7 @@
 - name: install and run nginx
   hosts: all # target node
-  become: true # root access
+  become: yes # root access 
+  serial: 2
   tasks: 
   - name: nginx install
     ansible.builtin.package:
