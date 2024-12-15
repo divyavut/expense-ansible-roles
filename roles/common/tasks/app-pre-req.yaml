@@ -9,13 +9,13 @@
     path: "{{ app_location }}"
     state: directory
 
-- name: "Download {{ app_location }} code"
+- name: "Download {{ component }} code"
   ansible.builtin.get_url:
-    url: "https://expense-builds.s3.us-east-1.amazonaws.com/expense-{{ app_location }}-v2.zip"
-    dest: "/tmp/{{ app_location }}.zip"
+    url: "https://expense-builds.s3.us-east-1.amazonaws.com/expense-{{ component }}-v2.zip"
+    dest: "/tmp/{{ component }}.zip"
 
-- name: "Extract {{ app_location }} code " 
+- name: "Extract {{ component }} code " 
   ansible.builtin.unarchive:
-    src: "/tmp/{{ app_location }}.zip"
+    src: "/tmp{{ component }}.zip"
     dest: "{{ app_location }}"
     remote_src: yes 
