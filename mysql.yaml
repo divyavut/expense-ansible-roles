@@ -1,7 +1,7 @@
 - name: configure mysql server
   hosts: mysql 
-  become: yes 
+  become: yes # root acess for remote server
   vars_files: 
-  - /var/expense/credential_mysql.yaml
+  - /var/expense/credential_mysql.yaml # this is in master node
   roles: 
   - mysql 
