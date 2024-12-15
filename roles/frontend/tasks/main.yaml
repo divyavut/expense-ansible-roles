@@ -9,26 +9,10 @@
     state: started
     enabled: yes 
 
-- name: Remove html directory
-  ansible.builtin.file:
-    path: /usr/share/nginx/html
-    state: absent
-      
-- name: Remove html directory
-  ansible.builtin.file:
-    path: /usr/share/nginx/html
-    state: directory
-      
-- name: Download backend url
-  ansible.builtin.get_url:
-    url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
-    dest: /tmp/frontend.zip
-
-- name: Extract /tmp/backend.zip
-  ansible.builtin.unarchive:
-    src: /tmp/frontend.zip
-    dest: /usr/share/nginx/html
-    remote_src: yes 
+- name: import task from common role to "{{ component }}" role
+  ansible.builtin.import_role: 
+    name: common # role name 
+    tasks_from: app-pre-req 
 
 - name: Copy expense conf to dest # copy will only works for files without variable
   # ansible.builtin.copy:
