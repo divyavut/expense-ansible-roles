@@ -1,0 +1,16 @@
+- name: Remove html directory
+  ansible.builtin.file:
+    path: "{{ app_location }}"
+    state: absent 
+  ignore_error: true
+
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: "{{ app_location }}"
+    state: directory
+
+- name: download and extract "/tmp/{{ component }}.zip"
+  ansible.builtin.unarchive:
+    src: "https://expense-builds.s3.us-east-1.amazonaws.com/expense-{{ component }}-v2.zip"
+    dest: " {{ app_location }} "
+    
