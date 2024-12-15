@@ -32,14 +32,16 @@
 
 - name: Copy expense conf to dest # copy will only works for files without variable
   # ansible.builtin.copy:
-  ansible.builtin.template:
+  ansible.builtin.template: # template will works for files with variable
     src: expense.conf.j2
     dest:  /etc/nginx/default.d/expense.conf
+  notify:
+  - Restart nginx
 
-- name: restart frontend service
-  ansible.builtin.service:
-    name: nginx
-    state: restarted 
-    enabled: true
+# - name: Restart nginx
+#   ansible.builtin.service:
+#     name: nginx
+#     state: restarted 
+#     enabled: true
 
 
