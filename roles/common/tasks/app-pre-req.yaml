@@ -10,9 +10,9 @@
     state: directory
 
 - name: "Download {{ app_location }} code"
-    ansible.builtin.get_url:
-      url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-"{{ app_location }}"-v2.zip
-      dest: "/tmp/{{ app_location }}.zip"
+  ansible.builtin.get_url:
+    url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-"{{ app_location }}"-v2.zip
+    dest: "/tmp/{{ app_location }}.zip"
 
 - name: "Extract {{ app_location }} code " 
   ansible.builtin.unarchive:
