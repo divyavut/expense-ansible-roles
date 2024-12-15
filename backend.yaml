@@ -1,7 +1,7 @@
 - name: configure backend 
   hosts: backend
   become: yes
-  vars: 
+  vars_files: 
   - /var/expense/credential_mysql.yaml # this is in master node
   roles: 
   - backend
