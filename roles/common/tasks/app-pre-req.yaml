@@ -8,6 +8,7 @@
   ansible.builtin.file:
     path: "{{ app_location }}"
     state: directory
+    mode: '0755'
     
 - name: download and extract "/tmp/{{ component }}.zip"
   ansible.builtin.unarchive:
