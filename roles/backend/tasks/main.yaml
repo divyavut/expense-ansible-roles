@@ -26,11 +26,16 @@
     name: expense  
 
 - name: import task from common role to "{{ component }}" role
+  tags: 
+  - deployment
   ansible.builtin.import_role: 
     name: common # role name 
     tasks_from: app-pre-req 
 
+
 - name: install dependencies
+  tags: 
+  - deployment
   ansible.builtin.command: npm install
   args:
     chdir: /app
@@ -49,7 +54,9 @@
     name: all
     state: import 
     
-- name: reload and restart backend service
+- name:  daemon reload and restart backend service
+  tags: 
+  - deployment
   ansible.builtin.systemd:
     state: restarted
     daemon_reload: yes 
