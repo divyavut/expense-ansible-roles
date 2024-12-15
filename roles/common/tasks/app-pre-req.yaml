@@ -1,4 +1,4 @@
-- name: Remove app location directory
+- name: Remove html directory
   ansible.builtin.file:
     path: "{{ app_location }}"
     state: absent 
